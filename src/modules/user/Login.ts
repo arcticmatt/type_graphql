@@ -24,6 +24,10 @@ export class LoginResolver {
       return null;
     }
 
+    if (!user.confirmed) {
+      return null;
+    }
+
     // Added session with middleware (express-session)
     ctx.req.session!.userId = user.id;
 
