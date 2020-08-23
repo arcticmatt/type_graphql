@@ -2,12 +2,19 @@ import { Connection } from "typeorm";
 
 import { testConn } from "../../../test-utils/testConn";
 import { gCall } from "../../../test-utils/gCall";
+import { redis } from "../../../../src/redis";
 
 let conn: Connection;
 beforeAll(async () => {
+  if (redis.status == "end") {
+    await redis.connect();
+  }
+
   conn = await testConn();
 });
 afterAll(async () => {
+  redis.disconnect();
+
   await conn.close();
 });
 
