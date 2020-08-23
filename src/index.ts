@@ -19,7 +19,7 @@ const main = async () => {
   const apolloServer = new ApolloServer({
     schema,
     // https://www.apollographql.com/docs/apollo-server/data/resolvers/#the-context-argument
-    context: ({ req }: any) => ({ req }),
+    context: ({ req, res }: any) => ({ req, res }),
   });
 
   const app = Express();
