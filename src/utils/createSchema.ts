@@ -11,6 +11,7 @@ import {
   CreateProductResolver,
 } from "../modules/user/CreateUser";
 import { ProfilePictureResolver } from "../modules/user/ProfilePicture";
+import { UsersResolver } from "../modules/user/Users";
 
 export const createSchema = () =>
   buildSchema({
@@ -25,6 +26,7 @@ export const createSchema = () =>
       CreateUserResolver,
       CreateProductResolver,
       ProfilePictureResolver,
+      UsersResolver,
     ],
     // Technically not necessary, we use the isAuth middleware
     authChecker: ({ context: { req } }) => {
